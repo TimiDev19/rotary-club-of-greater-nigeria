@@ -43,6 +43,7 @@ export default function Home() {
             <span>01 / COMMUNITY</span>
             <span>Good grows when we serve together.</span>
           </div>
+          <div className="hero-credit">Photo: Mohammed Bayero Yayandi / <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a> · <a href="https://commons.wikimedia.org/wiki/File:Community_Clean_Up.jpg" target="_blank" rel="noreferrer">Wikimedia Commons</a></div>
         </section>
         <section className="intro">
           <span className="eyebrow">ROTARY E-CLUB OF GREATER NIGERIA</span>
