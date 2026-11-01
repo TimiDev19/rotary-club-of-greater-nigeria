@@ -1,14 +1,14 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, Facebook, Instagram } from "lucide-react";
 const links = [
-  ["Home", "/"],
+  ["Home", "/#top"],
   ["About", "/#about"],
-  ["Club officers", "/officers"],
-  ["Projects", "/projects"],
-  ["Bulletins", "/bulletins"],
-  ["Past presidents", "/past-presidents"],
+  ["Club officers", "/#officers"],
+  ["Projects", "/#projects"],
+  ["Bulletins", "/#bulletins"],
+  ["Past presidents", "/#past-presidents"],
 ];
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -61,6 +61,25 @@ export function Footer() {
           />
         </Link>
         <p>People of action, united in service.</p>
+        <div className="footer-socials">
+          <span>FOLLOW OUR COMMUNITY</span>
+          <a
+            href="https://www.facebook.com/search/top?q=Rotary%20E-Club%20of%20Greater%20Nigeria"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Find Rotary E-Club of Greater Nigeria on Facebook"
+          >
+            <Facebook size={16} aria-hidden="true" /> Facebook
+          </a>
+          <a
+            href="https://www.instagram.com/explore/search/keyword/?q=Rotary%20E-Club%20of%20Greater%20Nigeria"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Find Rotary E-Club of Greater Nigeria on Instagram"
+          >
+            <Instagram size={16} aria-hidden="true" /> Instagram
+          </a>
+        </div>
       </div>
       <div className="footer-links">
         <Link href="/projects">Projects</Link>

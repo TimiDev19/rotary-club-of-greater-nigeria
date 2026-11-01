@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <Shell>
       <main>
-        <section className="hero">
+        <section id="top" className="hero">
           <div
             className="hero-image"
             role="img"
@@ -56,6 +56,7 @@ export default function Home() {
         <RotaryPrinciples />
 
         <DataSection
+          id="projects"
           endpoint="/api/projects"
           title="Service, in action"
           kicker="OUR PROJECTS"
@@ -125,6 +126,7 @@ export default function Home() {
           </div>
         </section>
         <DataSection
+          id="officers"
           endpoint="/api/club-officers"
           title="The people who guide us"
           kicker="CLUB OFFICERS"
@@ -162,12 +164,14 @@ export default function Home() {
         </section>
 
         <DataSection
+          id="past-presidents"
           endpoint="/api/past-presidents"
           title="A legacy of leadership"
           kicker="LEAGUE OF PAST PRESIDENTS"
           href="/past-presidents"
         />
         <DataSection
+          id="bulletins"
           endpoint="/api/bulletins"
           title="Notes from our club"
           kicker="LATEST BULLETINS"
