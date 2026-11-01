@@ -32,7 +32,7 @@ export default function Home() {
             </h1>
             <p>
               Bringing together people of action through digital connections, shared
-              values, and a passion for service. As a Rotary eClub, we harness
+              values, and a passion for service. As a Rotary E-Club, we harness
               the power of technology and collaboration to inspire positive
               change, empower communities, and create lasting impact while
               staying united by our commitment to Service Above Self.
