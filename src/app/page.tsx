@@ -31,12 +31,11 @@ export default function Home() {
               <em>Make an impact.</em>
             </h1>
             <p>
-              Bringing together professionals, community leaders, and people of
-              action through digital connections, shared values, and a passion
-              for service. As a Rotary eClub, we harness the power of technology
-              and collaboration to inspire positive change, empower communities,
-              and create lasting impact while staying united by our commitment to Service
-              Above Self.
+              Bringing people of action through digital connections, shared
+              values, and a passion for service. As a Rotary eClub, we harness
+              the power of technology and collaboration to inspire positive
+              change, empower communities, and create lasting impact while
+              staying united by our commitment to Service Above Self.
             </p>
             <div className="hero-actions">
               <Link className="button gold-button" href="/projects">
@@ -104,14 +103,14 @@ export default function Home() {
                 <h3>Follow our community</h3>
                 <div className="social-links">
                   <a
-                    href="https://www.facebook.com/search/top?q=Rotary%20E-Club%20of%20Greater%20Nigeria"
+                    href="https://www.facebook.com/rcgreaternig"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <Facebook size={19} aria-hidden="true" /> Facebook
                   </a>
                   <a
-                    href="https://www.instagram.com/explore/search/keyword/?q=Rotary%20E-Club%20of%20Greater%20Nigeria"
+                    href="https://www.instagram.com/rcgreaternig"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

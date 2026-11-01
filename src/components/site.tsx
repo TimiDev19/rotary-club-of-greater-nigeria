@@ -64,7 +64,7 @@ export function Footer() {
         <div className="footer-socials">
           <span>FOLLOW OUR COMMUNITY</span>
           <a
-            href="https://www.facebook.com/search/top?q=Rotary%20E-Club%20of%20Greater%20Nigeria"
+            href="https://www.facebook.com/rcgreaternig"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Find Rotary E-Club of Greater Nigeria on Facebook"
@@ -72,7 +72,7 @@ export function Footer() {
             <Facebook size={16} aria-hidden="true" /> Facebook
           </a>
           <a
-            href="https://www.instagram.com/explore/search/keyword/?q=Rotary%20E-Club%20of%20Greater%20Nigeria"
+            href="https://www.instagram.com/rcgreaternig"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Find Rotary E-Club of Greater Nigeria on Instagram"
@@ -82,8 +82,8 @@ export function Footer() {
         </div>
       </div>
       <div className="footer-links">
-        <Link href="/projects">Projects</Link>
-        <Link href="/bulletins">Bulletins</Link>
+        <Link href="/#projects">Projects</Link>
+        <Link href="/#bulletins">Bulletins</Link>
         <Link href="/#about">About the club</Link>
         <Link href="/admin/login">Admin login</Link>
       </div>
