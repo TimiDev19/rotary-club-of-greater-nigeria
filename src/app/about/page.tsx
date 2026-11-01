@@ -1,1 +1,5 @@
-import Link from 'next/link'; import { Shell } from '@/components/site'; export default function Page(){return <Shell><main className="page about"><span className="eyebrow">WHO WE ARE</span><h1>Service starts<br/><em>with showing up.</em></h1><p className="lead">Rotary E-Club of Greater Nigeria is a community of people committed to service and fellowship. This page is ready for the club's approved introduction and contact information.</p><div className="placeholder-grid"><div><span className="eyebrow">OUR PURPOSE</span><h2>Mission</h2><p className="placeholder">Add the club's approved mission statement.</p></div><div><span className="eyebrow">CONNECT</span><h2>Meetings & contact</h2><p className="placeholder">Add approved meeting details and contact channels.</p></div></div><Link className="button blue-button" href="/projects">See our service projects</Link></main></Shell>}
+import { permanentRedirect } from "next/navigation";
+
+export default function AboutRedirect() {
+  permanentRedirect("/#about");
+}
