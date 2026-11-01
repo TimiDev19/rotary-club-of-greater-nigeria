@@ -31,7 +31,7 @@ export default function Home() {
               <em>Make an impact.</em>
             </h1>
             <p>
-              Bringing people of action through digital connections, shared
+              Bringing together people of action through digital connections, shared
               values, and a passion for service. As a Rotary eClub, we harness
               the power of technology and collaboration to inspire positive
               change, empower communities, and create lasting impact while
@@ -73,7 +73,7 @@ export default function Home() {
               Service starts with <em>showing up.</em>
             </h2>
             <p>
-              Rotary E-Club of Greater Nigeria is a community of people
+              <b>Rotary E-Club of Greater Nigeria</b> is a community of people of action
               committed to service and fellowship.
             </p>
           </div>

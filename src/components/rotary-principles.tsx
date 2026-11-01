@@ -71,8 +71,8 @@ export function RotaryPrinciples() {
             </div>
             <span className="principle-label">OUR MISSION</span>
             <p>
-              Rotary provides service to others, promotes integrity, and
-              advances world understanding, goodwill, and peace through its
+              We provide service to others, promote integrity, and
+              advance world understanding, goodwill, and peace through our
               fellowship of business, professional, and community leaders
             </p>
             <span className="principle-orbit" aria-hidden="true">
@@ -118,7 +118,7 @@ export function RotaryPrinciples() {
             </div>
             <div>
               <span className="four-way-kicker">
-                A simple check. A lasting impact.
+                A simple check. A lasting legacy.
               </span>
               <h3>THE FOUR-WAY TEST</h3>
               <p>Of the things we think, say, or do:</p>
