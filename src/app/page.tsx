@@ -20,7 +20,7 @@ export default function Home() {
           <div
             className="hero-image"
             role="img"
-            aria-label="Community volunteers working together to plant a tree"
+            aria-label="Rotary E-Club of Greater Nigeria members at a renovated physics laboratory"
           />
           <div className="hero-shade" />
           <div className="hero-copy">
@@ -140,7 +140,7 @@ export default function Home() {
             <em>Rooted in community.</em>
           </h2>
           <p>
-            We bring people together to turn care into action. Explore the
+            We bring people together to turn purpose into action. Explore the
             projects, leaders and stories shared by our club.
           </p>
           <div className="intro-icons">
