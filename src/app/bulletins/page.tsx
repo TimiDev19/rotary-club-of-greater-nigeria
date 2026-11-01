@@ -1,0 +1,1 @@
+import { Shell } from '@/components/site'; import { Collection } from '@/components/content'; export default function Page(){return <Shell><Collection endpoint="/api/bulletins" title="Bulletins" kicker="CLUB JOURNAL"/></Shell>}
