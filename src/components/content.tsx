@@ -6,7 +6,23 @@ import { ArrowUpRight, CalendarDays } from 'lucide-react';
 import { api, items, type Entity } from '@/lib/api';
 import { Reveal } from '@/components/reveal';
 import { CardGridSkeleton } from '@/components/loading';
-import { formatDate } from '@/lib/date';
+import { formatDate, sortBulletins } from '@/lib/date';
+
+async function loadAllBulletins(search = ''): Promise<Entity[]> {
+  const endpoint = '/api/bulletins';
+  const limit = 20;
+  const query = `limit=${limit}&search=${encodeURIComponent(search)}`;
+  const first = await api<any>(`${endpoint}?page=1&${query}`);
+  const results = items<Entity>(first);
+  const totalPages = Number(first?.meta?.total_pages || 1);
+  if (totalPages <= 1) return sortBulletins(results);
+  const remaining = await Promise.all(
+    Array.from({ length: totalPages - 1 }, (_, index) =>
+      api<any>(`${endpoint}?page=${index + 2}&${query}`),
+    ),
+  );
+  return sortBulletins(results.concat(...remaining.map((value) => items<Entity>(value))));
+}
 
 export function DataSection({
   endpoint,
@@ -29,8 +45,10 @@ export function DataSection({
 
   useEffect(() => {
     setLoading(true);
-    api<unknown>(endpoint)
-      .then((value) => setRows(items<Entity>(value)))
+    (endpoint === '/api/bulletins' ? loadAllBulletins() : api<unknown>(endpoint).then(items<Entity>))
+      .then((data) => {
+        setRows(endpoint === '/api/bulletins' ? sortBulletins(data) : data);
+      })
       .catch((cause) => setError(cause.message))
       .finally(() => setLoading(false));
   }, [endpoint]);
@@ -148,22 +166,38 @@ export function Collection({
   const [page, setPage] = useState(1);
   const [pages, setPages] = useState(1);
   const [loading, setLoading] = useState(true);
+  const bulletins = endpoint === '/api/bulletins';
+  const requestPage = bulletins ? 1 : page;
 
   useEffect(() => {
+    let active = true;
     setLoading(true);
-    api<any>(`${endpoint}?page=${page}&limit=10&search=${encodeURIComponent(query)}`)
-      .then((value) => {
-        setRows(items<Entity>(value));
+    setError('');
+    const load = async () => {
+      if (bulletins) {
+        const results = await loadAllBulletins(query);
+        if (active) {
+          setRows(results);
+          setPages(Math.max(1, Math.ceil(results.length / 10)));
+        }
+      } else {
+        const value = await api<any>(`${endpoint}?page=${requestPage}&limit=10&search=${encodeURIComponent(query)}`);
+        const results = items<Entity>(value);
+        if (!active) return;
+        setRows(results);
         setPages(value?.meta?.total_pages || 1);
-        setError('');
-      })
-      .catch((cause) => setError(cause.message))
-      .finally(() => setLoading(false));
-  }, [endpoint, page, query]);
+      }
+    };
+    load()
+      .catch((cause) => { if (active) setError(cause.message); })
+      .finally(() => { if (active) setLoading(false); });
+    return () => { active = false; };
+  }, [endpoint, requestPage, query, bulletins]);
 
   const officers = endpoint === '/api/club-officers';
   const presidents = endpoint === '/api/past-presidents';
   const people = officers || presidents;
+  const visibleRows = bulletins ? rows.slice((page - 1) * 10, page * 10) : rows;
 
   return (
     <main className="page">
@@ -185,7 +219,7 @@ export function Collection({
           <div className="officer-grid">{rows.map((row, index) => <OfficerCard key={row.id} person={row} index={index} variant={presidents ? 'president' : 'officer'} />)}</div>
         ) : (
           <div className="cards">
-            {rows.map((row, index) => (
+            {visibleRows.map((row, index) => (
               <article className="story-card" key={row.id}>
                 <div className={`card-image tone-${index % 3}`} style={row.image_url ? { backgroundImage: `url(${row.image_url})` } : undefined} />
                 <div className="card-copy">
