@@ -80,25 +80,31 @@
 
 .project-description{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
 
-.about-home{display:grid;grid-template-columns:.85fr 1.15fr;align-items:start;gap:5vw;background:linear-gradient(120deg,#f7f5ef 0%,#fff 100%);scroll-margin-top:90px}
+.about-home{display:grid;grid-template-columns:.85fr 1.15fr;align-items:start;gap:30px 5vw;background:linear-gradient(120deg,#f7f5ef 0%,#fff 100%);scroll-margin-top:90px}
 .about-home-heading h2{max-width:570px;margin:13px 0 20px;color:#172b43;font-size:clamp(38px,5vw,58px);line-height:1.07;letter-spacing:-.045em}
 .about-home-heading h2 em{font-family:Georgia,serif;font-weight:400;color:var(--blue)}
 .about-home-heading>p{max-width:420px;color:#536170;font:19px/1.7 Georgia,serif}
 .about-home-copy{max-width:520px}
 .about-home-rule{display:block;width:52px;height:4px;margin-bottom:22px;border-radius:3px;background:var(--gold)}
-.about-home-copy p{margin:0 0 22px;color:#536170;font:20px/1.7 Georgia,serif}
-.about-home-details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:0 0 25px}
+.about-home-copy p{margin:0 0 22px;color:#536170;font:18px/1.75 Georgia,serif}
+.about-home-details{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:0}
 .about-detail-card{min-height:180px;padding:22px;border:1px solid #e8e3d8;border-radius:18px;background:#fff;box-shadow:0 12px 28px #172b430c}
 .about-detail-card h3{margin:12px 0;color:#172b43;font-size:21px}
-.about-detail-card p{margin:0;color:#536170;font:16px/1.6 Georgia,serif}
+.about-detail-card p{margin:0;color:#536170;font:15px/1.65 Georgia,serif}
 .about-detail-card p strong{color:#172b43}
 .about-detail-card .eyebrow{font-size:10px}
 .social-card{grid-column:1/-1;min-height:0}
+.about-home-footer{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:22px;padding:22px 25px;border-radius:15px;background:linear-gradient(110deg,#17458f,#12366f);box-shadow:0 14px 30px #17458f20}
+.about-home-footer p{max-width:650px;margin:0;color:#fff;font:21px/1.45 Georgia,serif}
+.about-home-footer .button{flex:0 0 auto;background:var(--gold);color:#172332}
+.about-contact-link{display:inline-flex;align-items:center;gap:7px;margin-top:15px;color:var(--blue);font-size:11px;font-weight:800}
+.about-contact-link:hover{text-decoration:underline;text-underline-offset:3px}
 .social-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
 .social-links a{display:inline-flex;align-items:center;gap:9px;padding:11px 15px;border:1px solid #e8e3d8;border-radius:999px;color:#172b43;font-weight:700;text-decoration:none;transition:background .2s,color .2s,border-color .2s}
 .social-links a:hover{border-color:var(--blue);background:var(--blue);color:#fff}
-@media(max-width:700px){.about-home{grid-template-columns:1fr;gap:24px}.about-home-heading h2{font-size:clamp(36px,9vw,48px)}.about-home-copy p{font-size:18px}}
-@media(max-width:460px){.about-home-details{grid-template-columns:1fr}.social-card{grid-column:auto}.about-detail-card{min-height:0;padding:19px}}
+@media(max-width:850px){.about-home-details{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.about-home{grid-template-columns:1fr;gap:22px}.about-home-heading h2{font-size:clamp(36px,9vw,48px)}.about-home-copy p{font-size:17px}.about-home-footer{align-items:flex-start;flex-direction:column}}
+@media(max-width:460px){.about-home-details{grid-template-columns:1fr}.social-card{grid-column:auto}.about-detail-card{min-height:0;padding:19px}.about-home-footer{padding:20px}.about-home-footer p{font-size:19px}.about-home-footer .button{width:100%}}
 
 .cta-band{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);align-items:center;gap:7vw;background:linear-gradient(120deg,#123a78 0%,#17458f 62%,#123b7b 100%);isolation:isolate}
 .cta-band::after{position:absolute;z-index:-1;right:-190px;top:-280px;width:580px;height:580px;border:1px solid #f7a81b38;border-radius:50%;box-shadow:0 0 0 35px #f7a81b0a,0 0 0 75px #f7a81b08;content:""}

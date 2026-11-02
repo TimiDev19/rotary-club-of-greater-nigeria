@@ -6,6 +6,7 @@ import {
   HeartHandshake,
   Facebook,
   Instagram,
+  Mail,
   UsersRound,
 } from "lucide-react";
 import { Shell } from "@/components/site";
@@ -72,59 +73,94 @@ export default function Home() {
         >
           <div className="about-home-heading">
             <span className="eyebrow">WHO WE ARE</span>
-            <h2 id="about-home-title">
-              Service starts with <em>showing up.</em>
-            </h2>
+            <h2 id="about-home-title">Why join our <em>Rotary family?</em></h2>
             <p>
-              <b>Rotary E-Club of Greater Nigeria</b> is a community of people of action
-              committed to service and fellowship.
+              More than membership, it is an immediate opportunity to serve,
+              make a difference, and connect with a global network of changemakers.
             </p>
           </div>
           <div className="about-home-copy">
             <span className="about-home-rule" aria-hidden="true" />
-            <div className="about-home-details">
-              <article className="about-detail-card mission-card">
-                <span className="eyebrow">OUR PURPOSE</span>
-                <h3>Our mission</h3>
-                <p>
-                  We provide service to others, promote integrity, and advance
-                  world understanding, goodwill, and peace through our
-                  fellowship of business, professional, and community leaders.
-                </p>
-              </article>
-              <article className="about-detail-card meeting-card">
-                <span className="eyebrow">COME TOGETHER</span>
-                <h3>Club meetings</h3>
-                <p>
-                  <strong>Every Saturday</strong>
-                  <br />
-                  20:30 West Africa Time (WAT)
-                </p>
-              </article>
-              <article className="about-detail-card social-card">
-                <span className="eyebrow">STAY CONNECTED</span>
-                <h3>Follow our community</h3>
-                <div className="social-links">
-                  <a
-                    href="https://www.facebook.com/rcgreaternig"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Facebook size={19} aria-hidden="true" /> Facebook
-                  </a>
-                  <a
-                    href="https://www.instagram.com/rcgreaternig"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Instagram size={19} aria-hidden="true" /> Instagram
-                  </a>
-                </div>
-              </article>
-            </div>
-            <Link className="text-link" href="/projects">
-              See our service projects <ArrowRight size={17} />
-            </Link>
+            <p className="about-home-story">
+              Chartered in 2016, Rotary E-Club of Greater Nigeria is Nigeria’s
+              oldest E-Club. We are a Rotary club like any other, with virtual
+              meetings every Saturday at 8:30 p.m. Nigerian time—making Rotary
+              accessible for busy schedules, frequent travel, and limited mobility.
+            </p>
+          </div>
+          <div className="about-home-details">
+            <article className="about-detail-card mission-card">
+              <span className="eyebrow">OUR PURPOSE</span>
+              <h3>Service from day one</h3>
+              <p>
+                Put your skills to work in impactful projects, build meaningful
+                friendships, grow your leadership, and connect with professionals
+                across the globe—all from your phone.
+              </p>
+            </article>
+            <article className="about-detail-card meeting-card">
+              <span className="eyebrow">A CLUB THAT FITS YOUR LIFE</span>
+              <h3>Meet virtually</h3>
+              <p>
+                <strong>Every Saturday at 8:30 p.m.</strong>
+                <br />
+                Nigerian time (WAT), wherever you are.
+              </p>
+            </article>
+            <article className="about-detail-card membership-card">
+              <span className="eyebrow">A WELCOMING COMMUNITY</span>
+              <h3>There’s room for you</h3>
+              <p>
+                Former Rotaractors, Rotarians seeking a new club, professionals,
+                business owners, and anyone passionate about service and community development are welcome.
+              </p>
+            </article>
+            <article className="about-detail-card leadership-card">
+              <span className="eyebrow">LEADERSHIP IN ACTION</span>
+              <h3>Growing leaders</h3>
+              <p>
+                We are proud to count a District Governor-Nominee among our
+                members, set to serve as District Governor in the 2028–2029 Rotary year.
+              </p>
+            </article>
+            <article className="about-detail-card dues-card">
+              <span className="eyebrow">ACCESSIBLE MEMBERSHIP</span>
+              <h3>Affordable dues</h3>
+              <p>
+                Membership dues are affordable, with subsidised arrangements
+                available for eligible former Rotaractors. Contact the club to learn more.
+              </p>
+              <a className="about-contact-link" href="mailto:greaterrotaryeclub@gmail.com?subject=Question%20about%20joining%20Rotary%20E-Club%20of%20Greater%20Nigeria">
+                <Mail size={16} aria-hidden="true" /> Contact the club
+                <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
+            </article>
+            <article className="about-detail-card social-card">
+              <span className="eyebrow">STAY CONNECTED</span>
+              <h3>Follow our community</h3>
+              <div className="social-links">
+                <a
+                  href="https://www.facebook.com/rcgreaternig"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Facebook size={19} aria-hidden="true" /> Facebook
+                </a>
+                <a
+                  href="https://www.instagram.com/rcgreaternig"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Instagram size={19} aria-hidden="true" /> Instagram
+                </a>
+              </div>
+            </article>
+          </div>
+          <div className="about-home-footer">
+            <p>Don’t just join Rotary. Join a club where you can begin serving from day one.</p>
+            <a className="button blue-button" href="mailto:greaterrotaryeclub@gmail.com?subject=I%27d%20like%20to%20join%20Rotary%20E-Club%20of%20Greater%20Nigeria">
+              Reach out to join <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
           </div>
         </section>
         <DataSection
