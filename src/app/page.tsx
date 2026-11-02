@@ -72,7 +72,10 @@ export default function Home() {
           aria-labelledby="about-home-title"
         >
           <div className="about-home-heading">
-            <span className="eyebrow">WHO WE ARE</span>
+            <div className="about-home-kicker">
+              <span className="eyebrow">WHO WE ARE</span>
+              <span className="about-home-emblem"><img src="/emblem.jpg" alt="Rotary emblem" /></span>
+            </div>
             <h2 id="about-home-title">Why join our <em>Rotary family?</em></h2>
             <p>
               More than membership, it is an immediate opportunity to serve,
