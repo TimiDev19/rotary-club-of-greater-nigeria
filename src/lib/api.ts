@@ -18,6 +18,16 @@ export async function api<T>(path: string, init: RequestInit = {}, token?: strin
   if(!res.ok||result?.success===false){const errors=result?.errors?Object.entries(result.errors).map(([k,v])=>`${k}: ${v}`).join(' • '):'';throw new ApiError(res.status,result?.message?`${result.message}${errors?` — ${errors}`:''}`:`Request failed (${res.status})`)}
   return result as T;
 }
+export async function downloadApiFile(path:string,filename:string):Promise<void>{
+  if(!base)throw new ApiError(0,'API is not configured. Set NEXT_PUBLIC_API_BASE_URL to connect club content.');
+  const request=(accessToken?:string)=>fetch(`${base}${path}`,{headers:accessToken?{Authorization:`Bearer ${accessToken}`}:{},cache:'no-store'});
+  let accessToken=typeof window!=='undefined'?sessionStorage.getItem('rotary_access_token')||undefined:undefined;
+  let response=await request(accessToken);
+  if(response.status===401&&accessToken){const renewed=await refreshAccessToken();if(renewed){accessToken=renewed;response=await request(accessToken)}}
+  if(!response.ok){let message='Could not download the card';try{const result=await response.json();message=result?.message||message}catch{}throw new ApiError(response.status,message)}
+  const file=await response.blob();
+  const url=URL.createObjectURL(file);const link=document.createElement('a');link.href=url;link.download=filename;document.body.appendChild(link);link.click();link.remove();window.setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
 export function unwrap<T>(v:Envelope<T>|T):T { return ((v as Envelope<T>)?.data??v) as T; }
 export function items<T>(v: any): T[] { const x=unwrap<any>(v);if(Array.isArray(x))return x;if(Array.isArray(x?.data))return x.data;if(Array.isArray(v?.results))return v.results;return []; }
 export function json(body: unknown): string { return JSON.stringify(body); }

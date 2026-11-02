@@ -5,6 +5,7 @@ import { Menu, X, ArrowUpRight, Facebook, Instagram } from "lucide-react";
 const links = [
   ["Home", "/#top"],
   ["About", "/#about"],
+  ["Make-up card", "/#makeup-card"],
   ["Club officers", "/#officers"],
   ["Projects", "/#projects"],
   ["Bulletins", "/#bulletins"],
@@ -84,6 +85,7 @@ export function Footer() {
       <div className="footer-links">
         <Link href="/#projects">Projects</Link>
         <Link href="/#bulletins">Bulletins</Link>
+        <Link href="/#makeup-card">Make-up card</Link>
         <Link href="/#about">About the club</Link>
         <Link href="/admin/login">Admin login</Link>
       </div>

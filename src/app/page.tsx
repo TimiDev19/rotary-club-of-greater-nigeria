@@ -12,6 +12,7 @@ import { Shell } from "@/components/site";
 import { DataSection } from "@/components/content";
 import { RotaryPrinciples } from "@/components/rotary-principles";
 import { JoinCta } from "@/components/join-cta";
+import { MakeupCta } from "@/components/makeup-cta";
 export default function Home() {
   return (
     <Shell>
@@ -53,6 +54,8 @@ export default function Home() {
           <div className="hero-credit">Stock photo: RDNE Stock project · <a href="https://www.pexels.com/photo/love-people-event-africa-6646861/" target="_blank" rel="noreferrer">Pexels</a></div> */}
         </section>
         <RotaryPrinciples />
+
+        <MakeupCta />
 
         <DataSection
           id="projects"
