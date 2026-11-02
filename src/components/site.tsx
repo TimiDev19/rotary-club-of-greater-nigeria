@@ -25,6 +25,8 @@ export function Header() {
           src="/club-logo.png"
           alt="Rotary E-Club of Greater Nigeria"
         />
+        <span className="brand-divider" aria-hidden="true" />
+        <img className="brand-emblem" src="/emblem.jpg" alt="Rotary emblem" />
       </Link>
       <button
         className="mobile-toggle"
