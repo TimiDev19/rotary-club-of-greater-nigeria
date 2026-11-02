@@ -19,6 +19,7 @@ type MakeupRequest = {
   created_at: string;
   rejection_note?: string | null;
   president_name?: string | null;
+  secretary_name?: string | null;
   card_available?: boolean;
 };
 type ReviewMode = 'approve' | 'reject' | null;
@@ -171,6 +172,10 @@ export function MakeupRequestReview() {
   const [message, setMessage] = useState('');
   const [mode, setMode] = useState<ReviewMode>(null);
   const [presidentName, setPresidentName] = useState('');
+  const [secretaryName, setSecretaryName] = useState('');
+  const [repairPresidentName, setRepairPresidentName] = useState('');
+  const [repairSecretaryName, setRepairSecretaryName] = useState('');
+  const [repairingCard, setRepairingCard] = useState(false);
   const [rejectionNote, setRejectionNote] = useState('');
 
   async function load() {
@@ -202,7 +207,7 @@ export function MakeupRequestReview() {
     setMessage('');
     const path = `/api/makeup-requests/${request.id}/${mode}`;
     const body = mode === 'approve'
-      ? { president_name: presidentName.trim() }
+      ? { president_name: presidentName.trim(), secretary_name: secretaryName.trim() }
       : { rejection_note: rejectionNote.trim() || undefined };
     try {
       const result = await api<Envelope<MakeupRequest>>(path, { method: 'POST', body: JSON.stringify(body) });
@@ -210,6 +215,7 @@ export function MakeupRequestReview() {
       setMessage(mode === 'approve' ? 'Request approved and the PDF card is ready.' : 'Request rejected.');
       setMode(null);
       setPresidentName('');
+      setSecretaryName('');
       setRejectionNote('');
     } catch (cause: any) {
       if (cause.status === 409) {
@@ -221,6 +227,32 @@ export function MakeupRequestReview() {
       if (cause.status === 401 || cause.status === 403) router.replace('/admin/login');
     } finally {
       setBusy(false);
+    }
+  }
+
+  async function repairApprovedCard(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!request) return;
+    setRepairingCard(true);
+    setError('');
+    setMessage('');
+    try {
+      const result = await api<Envelope<MakeupRequest>>(`/api/makeup-requests/${request.id}/officers`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          secretary_name: repairSecretaryName.trim() || request.secretary_name || '',
+          president_name: repairPresidentName.trim() || undefined,
+        }),
+      });
+      setRequest(unwrap(result));
+      setRepairSecretaryName('');
+      setRepairPresidentName('');
+      setMessage('Officer details saved and the PDF card was regenerated.');
+    } catch (cause: any) {
+      setError(cause.message || 'Could not update the officer names or regenerate the card.');
+      if (cause.status === 401 || cause.status === 403) router.replace('/admin/login');
+    } finally {
+      setRepairingCard(false);
     }
   }
 
@@ -254,14 +286,27 @@ export function MakeupRequestReview() {
             <dl className="makeup-detail-grid">
               <div><dt>Request date</dt><dd>{dateLabel(request)}</dd></div>
               <div><dt>Submitted</dt><dd>{formatDateTime(request.created_at)}</dd></div>
-              {request.president_name && <div><dt>Approved by</dt><dd>{request.president_name}</dd></div>}
+              {request.president_name && <div><dt>Club President</dt><dd>{request.president_name}</dd></div>}
+              {request.secretary_name && <div><dt>Club Secretary</dt><dd>{request.secretary_name}</dd></div>}
             </dl>
             {request.status === 'rejected' && request.rejection_note && <div className="makeup-rejection-note"><strong>Rejection note</strong><p>{request.rejection_note}</p></div>}
+            {request.status === 'approved' && (!request.secretary_name || request.card_available === false) && (
+              <form className="form makeup-officer-repair" onSubmit={repairApprovedCard}>
+                <div>
+                  <span className="eyebrow">UPDATE CARD OFFICERS</span>
+                  <h2>Complete the approved card</h2>
+                  <p>Add or confirm the Club Secretary’s name to regenerate this approved card.</p>
+                </div>
+                <label>Club Secretary’s name<input value={repairSecretaryName || request.secretary_name || ''} onChange={(event) => setRepairSecretaryName(event.target.value)} maxLength={160} required /></label>
+                <label>Club President’s name (optional)<input value={repairPresidentName} onChange={(event) => setRepairPresidentName(event.target.value)} maxLength={160} placeholder={request.president_name || ''} /></label>
+                <button className="button blue-button" disabled={repairingCard}>{repairingCard ? 'Regenerating card…' : 'Save names & regenerate PDF'}</button>
+              </form>
+            )}
             <div className="makeup-review-actions">
               {request.status === 'pending' ? <>
                 <button className="button blue-button" onClick={() => setMode('approve')}>Approve request</button>
                 <button className="button makeup-reject-button" onClick={() => setMode('reject')}>Reject request</button>
-              </> : request.status === 'approved' && request.card_available !== false ? (
+              </> : request.status === 'approved' && request.secretary_name && request.card_available !== false ? (
                 <button className="button blue-button" onClick={download} disabled={downloading}><Download size={17} /> {downloading ? 'Preparing PDF…' : 'Download PDF card'}</button>
               ) : null}
               <Link href="/admin/makeup-requests" className="text-link">Back to requests <ArrowRight size={15} /></Link>
@@ -276,7 +321,10 @@ export function MakeupRequestReview() {
           <span className="eyebrow">{mode === 'approve' ? 'APPROVE MAKE-UP' : 'REJECT MAKE-UP'}</span>
           <h2 id="makeup-review-title">{mode === 'approve' ? 'Approve this visit?' : 'Reject this request?'}</h2>
           <p>{mode === 'approve' ? 'The PDF make-up card will be generated after approval.' : 'The request will be marked as rejected. You may add an internal note.'}</p>
-          {mode === 'approve' ? <label>Club President’s name<input autoFocus value={presidentName} onChange={(event) => setPresidentName(event.target.value)} maxLength={160} required /></label> : <label>Rejection note (optional)<textarea rows={4} maxLength={1000} value={rejectionNote} onChange={(event) => setRejectionNote(event.target.value)} /></label>}
+          {mode === 'approve' ? <>
+            <label>Club President’s name<input autoFocus value={presidentName} onChange={(event) => setPresidentName(event.target.value)} maxLength={160} required /></label>
+            <label>Club Secretary’s name<input value={secretaryName} onChange={(event) => setSecretaryName(event.target.value)} maxLength={160} required /></label>
+          </> : <label>Rejection note (optional)<textarea rows={4} maxLength={1000} value={rejectionNote} onChange={(event) => setRejectionNote(event.target.value)} /></label>}
           {error && <div className="notice error" role="alert">{error}</div>}
           <div className="form-actions"><button type="button" onClick={() => setMode(null)}>Cancel</button><button className={`button ${mode === 'approve' ? 'blue-button' : 'makeup-reject-button'}`} disabled={busy}>{busy ? 'Saving…' : mode === 'approve' ? 'Approve & generate PDF' : 'Confirm rejection'}</button></div>
         </form>
