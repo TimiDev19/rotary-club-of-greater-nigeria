@@ -14,6 +14,7 @@ import { DataSection } from "@/components/content";
 import { RotaryPrinciples } from "@/components/rotary-principles";
 import { JoinCta } from "@/components/join-cta";
 import { MakeupCta } from "@/components/makeup-cta";
+import { DonateCta } from "@/components/donate-cta";
 export default function Home() {
   return (
     <Shell>
@@ -65,6 +66,8 @@ export default function Home() {
           kicker="OUR PROJECTS"
           href="/projects"
         />
+
+        <DonateCta />
 
         <section
           id="about"

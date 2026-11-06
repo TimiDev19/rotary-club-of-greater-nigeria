@@ -8,6 +8,7 @@ const links = [
   ["Make-up card", "/#makeup-card"],
   ["Club officers", "/#officers"],
   ["Projects", "/#projects"],
+  ["Donate", "/#donate"],
   ["Bulletins", "/#bulletins"],
   ["Past presidents", "/#past-presidents"],
 ];
@@ -84,6 +85,7 @@ export function Footer() {
       </div>
       <div className="footer-links">
         <Link href="/#projects">Projects</Link>
+        <Link href="/#donate">Donate</Link>
         <Link href="/#bulletins">Bulletins</Link>
         <Link href="/#makeup-card">Make-up card</Link>
         <Link href="/#about">About the club</Link>
