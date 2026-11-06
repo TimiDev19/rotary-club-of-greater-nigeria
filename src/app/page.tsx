@@ -15,6 +15,7 @@ import { RotaryPrinciples } from "@/components/rotary-principles";
 import { JoinCta } from "@/components/join-cta";
 import { MakeupCta } from "@/components/makeup-cta";
 import { DonateCta } from "@/components/donate-cta";
+import { PresidentMessage } from "@/components/president-message";
 export default function Home() {
   return (
     <Shell>
@@ -56,6 +57,7 @@ export default function Home() {
           <div className="hero-credit">Stock photo: RDNE Stock project · <a href="https://www.pexels.com/photo/love-people-event-africa-6646861/" target="_blank" rel="noreferrer">Pexels</a></div> */}
         </section>
         <RotaryPrinciples />
+        <PresidentMessage />
 
         <MakeupCta />
 

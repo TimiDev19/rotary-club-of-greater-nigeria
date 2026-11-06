@@ -1,4 +1,4 @@
-export type Entity = { id: string | number; title?: string; name?: string; full_name?: string; position?: string; year_served?: string; description?: string; content?: string; body?: string; image?: string; image_url?: string; pdf_url?: string; date?: string; created_at?: string; author?: { name?: string }; [key: string]: unknown };
+export type Entity = { id: string | number; title?: string; name?: string; full_name?: string; president_name?: string; message?: string; position?: string; year_served?: string; description?: string; content?: string; body?: string; image?: string; image_url?: string; pdf_url?: string; date?: string; created_at?: string; author?: { name?: string }; [key: string]: unknown };
 export type Envelope<T> = { success: boolean; data?: T; meta?: { page?: number; limit?: number; total?: number; total_pages?: number }; message?: string; errors?: Record<string,string> };
 const base = (process.env.NEXT_PUBLIC_API_BASE_URL || '').replace(/\/$/, '');
 export class ApiError extends Error { constructor(public status: number, message: string) { super(message); } }
