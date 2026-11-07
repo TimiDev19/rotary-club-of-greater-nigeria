@@ -35,11 +35,11 @@ export default function Home() {
               <em>Make an impact.</em>
             </h1>
             <p>
-              Bringing together people of action through digital connections, shared
-              values, and a passion for service. As a Rotary E-Club, we harness
-              the power of technology and collaboration to inspire positive
-              change, empower communities, and create lasting impact while
-              staying united by our commitment to Service Above Self.
+              Bringing together people of action through digital connections,
+              shared values, and a passion for service. As a Rotary E-Club, we
+              harness the power of technology and collaboration to inspire
+              positive change, empower communities, and create lasting impact
+              while staying united by our commitment to Service Above Self.
             </p>
             <div className="hero-actions">
               <Link className="button gold-button" href="/projects">
@@ -79,12 +79,17 @@ export default function Home() {
           <div className="about-home-heading">
             <div className="about-home-kicker">
               <span className="eyebrow">WHO WE ARE</span>
-              <span className="about-home-emblem"><img src="/emblem.jpg" alt="Rotary emblem" /></span>
+              <span className="about-home-emblem">
+                <img src="/emblem.jpg" alt="Rotary emblem" />
+              </span>
             </div>
-            <h2 id="about-home-title">Why join our <em>Rotary family?</em></h2>
+            <h2 id="about-home-title">
+              Why join our <em>Rotary family?</em>
+            </h2>
             <p>
               More than membership, it is an immediate opportunity to serve,
-              make a difference, and connect with a global network of changemakers.
+              make a difference, and connect with a global network of
+              changemakers.
             </p>
           </div>
           <div className="about-home-copy">
@@ -93,7 +98,8 @@ export default function Home() {
               Chartered in 2016, Rotary E-Club of Greater Nigeria is Nigeria’s
               oldest E-Club. We are a Rotary club like any other, with virtual
               meetings every Saturday at 8:30 p.m. Nigerian time—making Rotary
-              accessible for busy schedules, frequent travel, and limited mobility.
+              accessible for busy schedules, frequent travel, and limited
+              mobility.
             </p>
           </div>
           <div className="about-home-details">
@@ -102,8 +108,8 @@ export default function Home() {
               <h3>Service from day one</h3>
               <p>
                 Put your skills to work in impactful projects, build meaningful
-                friendships, grow your leadership, and connect with professionals
-                across the globe—all from your phone.
+                friendships, grow your leadership, and connect with
+                professionals across the globe—all from your phone.
               </p>
             </article>
             <article className="about-detail-card meeting-card">
@@ -120,15 +126,17 @@ export default function Home() {
               <h3>There’s room for you</h3>
               <p>
                 Former Rotaractors, Rotarians seeking a new club, professionals,
-                business owners, and anyone passionate about service and community development are welcome.
+                business owners, and anyone passionate about service and
+                community development are welcome.
               </p>
             </article>
             <article className="about-detail-card leadership-card">
               <span className="eyebrow">LEADERSHIP IN ACTION</span>
               <h3>Growing leaders</h3>
               <p>
-                We are proud to count a District Governor-Nominee among our
-                members, set to serve as District Governor in the 2028–2029 Rotary year.
+                We are proud to count the District Governor-Nominee among our
+                members, set to serve as District Governor in the 2028–2029
+                Rotary year.
               </p>
             </article>
             <article className="about-detail-card dues-card">
@@ -136,9 +144,13 @@ export default function Home() {
               <h3>Affordable dues</h3>
               <p>
                 Membership dues are affordable, with subsidised arrangements
-                available for eligible former Rotaractors. Contact the club to learn more.
+                available for eligible former Rotaractors. Contact the club to
+                learn more.
               </p>
-              <a className="about-contact-link" href="mailto:greaterrotaryeclub@gmail.com?subject=Question%20about%20joining%20Rotary%20E-Club%20of%20Greater%20Nigeria">
+              <a
+                className="about-contact-link"
+                href="mailto:greaterrotaryeclub@gmail.com?subject=Question%20about%20joining%20Rotary%20E-Club%20of%20Greater%20Nigeria"
+              >
                 <Mail size={16} aria-hidden="true" /> Contact the club
                 <ArrowUpRight size={15} aria-hidden="true" />
               </a>
@@ -165,8 +177,14 @@ export default function Home() {
             </article>
           </div>
           <div className="about-home-footer">
-            <p>Don’t just join Rotary. Join a club where you can begin serving from day one.</p>
-            <a className="button blue-button" href="mailto:greaterrotaryeclub@gmail.com?subject=I%27d%20like%20to%20join%20Rotary%20E-Club%20of%20Greater%20Nigeria">
+            <p>
+              Don’t just join Rotary. Join a club where you can begin serving
+              from day one.
+            </p>
+            <a
+              className="button blue-button"
+              href="mailto:greaterrotaryeclub@gmail.com?subject=I%27d%20like%20to%20join%20Rotary%20E-Club%20of%20Greater%20Nigeria"
+            >
               Reach out to join <ArrowUpRight size={16} aria-hidden="true" />
             </a>
           </div>
