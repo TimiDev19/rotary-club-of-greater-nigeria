@@ -3278,3 +3278,12 @@ p {
     margin-left: 40px;
   }
 }
+
+.page-session-actions{display:flex;justify-content:flex-end;margin:0 0 18px}
+.sign-out-button{position:relative;display:inline-flex;align-items:center;gap:9px;min-height:42px;padding:0 17px;border:1px solid #dbe3ed;border-radius:999px;background:linear-gradient(135deg,#fff 0%,#f7f9fc 100%);color:#243b59;font-size:12px;font-weight:700;letter-spacing:.015em;box-shadow:0 3px 10px #172b430b;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,color .18s ease}
+.sign-out-button svg{color:#bd7e08;transition:transform .18s ease}
+.sign-out-button:hover:not(:disabled){transform:translateY(-2px);border-color:#e5b44f;color:#162d4a;box-shadow:0 7px 18px #172b4316}
+.sign-out-button:hover:not(:disabled) svg{transform:translateX(2px)}
+.sign-out-button:focus-visible{outline:3px solid #f7a81b66;outline-offset:3px}
+.sign-out-button:disabled{cursor:wait;opacity:.7}
+@media(prefers-reduced-motion:reduce){.sign-out-button,.sign-out-button svg{transition:none}}

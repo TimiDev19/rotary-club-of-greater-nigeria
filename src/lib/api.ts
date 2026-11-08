@@ -18,6 +18,17 @@ export async function api<T>(path: string, init: RequestInit = {}, token?: strin
   if(!res.ok||result?.success===false){const errors=result?.errors?Object.entries(result.errors).map(([k,v])=>`${k}: ${v}`).join(' • '):'';throw new ApiError(res.status,result?.message?`${result.message}${errors?` — ${errors}`:''}`:`Request failed (${res.status})`)}
   return result as T;
 }
+export async function logoutSession(role?: string): Promise<void> {
+  if (typeof window === 'undefined') return;
+  let sessionRole = role;
+  if (!sessionRole) {
+    try { sessionRole = JSON.parse(sessionStorage.getItem('rotary_user') || '{}').role; } catch {}
+  }
+  if (sessionRole === 'admin') {
+    try { await api('/api/auth/logout', { method: 'POST' }); } catch {}
+  }
+  clearSession();
+}
 export async function downloadApiFile(path:string,filename:string):Promise<void>{
   if(!base)throw new ApiError(0,'API is not configured. Set NEXT_PUBLIC_API_BASE_URL to connect club content.');
   const request=(accessToken?:string)=>fetch(`${base}${path}`,{headers:accessToken?{Authorization:`Bearer ${accessToken}`}:{},cache:'no-store'});

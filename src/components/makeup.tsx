@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { SignOutButton } from '@/components/sign-out';
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, BadgeCheck, ClipboardList, Download, FileText } from 'lucide-react';
@@ -131,7 +132,7 @@ export function MakeupRequestList() {
   }, [page, status, router]);
 
   return (
-    <main className="page makeup-admin-page">
+    <main className="page makeup-admin-page"><SignOutButton role="admin"/>
       <span className="eyebrow">ADMINISTRATION / VISITOR SERVICES</span>
       <div className="makeup-admin-heading">
         <div><h1>Make-up card requests</h1><p>Review visiting Rotarians’ attendance requests.</p></div>
@@ -271,7 +272,7 @@ export function MakeupRequestReview() {
   }
 
   return (
-    <main className="page makeup-admin-page">
+    <main className="page makeup-admin-page"><SignOutButton role="admin"/>
       <Link className="back makeup-back" href="/admin/makeup-requests"><ArrowLeft size={15} /> All requests</Link>
       {error && <div className="notice error" role="alert">{error}</div>}
       {message && <div className="notice success" role="status">{message}</div>}
